@@ -39,7 +39,7 @@ const Signup = ({ signup, isAuthenticated }) => {
             <form onSubmit={e => onSubmit(e)}>
                 <div className='form-group'>
                     <input
-                        className='form-control'
+                        className='form-control mt-3'
                         type='text'
                         placeholder='Name*'
                         name='name'
@@ -50,7 +50,7 @@ const Signup = ({ signup, isAuthenticated }) => {
                 </div>
                 <div className='form-group'>
                     <input
-                        className='form-control'
+                        className='form-control mt-2'
                         type='email'
                         placeholder='Email*'
                         name='email'
@@ -61,7 +61,7 @@ const Signup = ({ signup, isAuthenticated }) => {
                 </div>
                 <div className='form-group'>
                     <input
-                        className='form-control'
+                        className='form-control mt-2'
                         type='password'
                         placeholder='Password*'
                         name='password'
@@ -73,7 +73,7 @@ const Signup = ({ signup, isAuthenticated }) => {
                 </div>
                 <div className='form-group'>
                     <input
-                        className='form-control'
+                        className='form-control mt-2'
                         type='password'
                         placeholder='Confirm Password*'
                         name='re_password'
@@ -83,7 +83,7 @@ const Signup = ({ signup, isAuthenticated }) => {
                         required
                     />
                 </div>
-                <button className='btn btn-primary' type='submit'>Register</button>
+                <button className='btn btn-primary mt-3' type='submit'>Register</button>
             </form>
             <p className='mt-3'>
                 Already have an account? <Link to='/login'>Log In</Link>

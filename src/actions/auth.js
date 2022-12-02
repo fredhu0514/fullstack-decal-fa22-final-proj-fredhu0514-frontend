@@ -14,8 +14,34 @@ import {
     SIGNUP_FAIL,
     ACTIVATION_SUCCESS,
     ACTIVATION_FAIL,
+    JOB_CREATE_SUCCESS,
+    JOB_CREATE_FAIL,
     LOGOUT
 } from './types';
+
+export const create_job = (company, refer_scope_link, refer_scope_description, refer_requirement) => async dispatch => {
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+
+    const body = JSON.stringify({ company, refer_scope_link, refer_scope_description, refer_requirement });
+
+    try {
+        axios.defaults.xsrfCookieName = 'csrftoken';
+        axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+        await axios.post(`${process.env.REACT_APP_API_URL}/api/job/create/`, body, config);
+
+        dispatch({
+            type: JOB_CREATE_SUCCESS
+        });
+    } catch (err) {
+        dispatch({
+            type: JOB_CREATE_FAIL
+        });
+    }
+};
 
 export const checkAuthenticated = () => async dispatch => {
     if (localStorage.getItem('access')) {

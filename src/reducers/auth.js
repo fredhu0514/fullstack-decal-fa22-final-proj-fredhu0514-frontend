@@ -13,6 +13,8 @@ import {
     SIGNUP_FAIL,
     ACTIVATION_SUCCESS,
     ACTIVATION_FAIL,
+    JOB_CREATE_SUCCESS,
+    JOB_CREATE_FAIL,
     LOGOUT
 } from '../actions/types';
 
@@ -81,6 +83,8 @@ export default function(state = initialState, action) {
             return {
                 ...state
             }
+        case JOB_CREATE_SUCCESS:
+        case JOB_CREATE_FAIL:
         default:
             return state
     }

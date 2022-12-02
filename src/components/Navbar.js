@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../actions/auth';
 
@@ -13,13 +13,18 @@ const Navbar = ({ logout, isAuthenticated }) => {
 
     const guestLinks = () => (
         <Fragment>
+            <Link className="nav-link" to="/job-board">Jobs Board</Link>
             <Link className="nav-link" to="/login">Log In</Link>
             <Link className="nav-link" to="/signup">Sign Up</Link>
         </Fragment>
     );
 
     const authLinks = () => (
-        <a className="nav-link" href='#!' onClick={logout_user}>Log Out</a>
+        <Fragment>
+            <Link className="nav-link" to="/job-board">Jobs Board</Link>
+            <Link className="nav-link" to="/job-post">Jobs Post</Link>
+            <a className="nav-link" href='#!' onClick={logout_user}>Log Out</a>
+        </Fragment>
     );
 
     return (
