@@ -1,9 +1,33 @@
 import React, { useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { create_job } from '../actions/auth';
+import axios from 'axios';
 
-const JobCreate = ({ create_job, isAuthenticated }) => {
+
+const JobCreate = ({ isAuthenticated }) => {
+    const navigate = useNavigate();
+
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+
+    function func(formData) {
+        const { company, refer_scope_link, refer_scope_description, refer_requirement } = formData;
+        const body = JSON.stringify({ company, refer_scope_link, refer_scope_description, refer_requirement });
+        // axios.defaults.xsrfCookieName = 'csrftoken';
+        // axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+        axios.post(`${process.env.REACT_APP_API_URL}/api/job/post/`, body, config)
+        .then((res) => {
+            console.log(res)
+            navigate('/job-board');
+        })
+        .catch((err) => {
+            console.log(err)
+        });
+    }
+
     const [formData, setFormData] = useState({
         company: '',
         refer_scope_link: '',
@@ -15,7 +39,7 @@ const JobCreate = ({ create_job, isAuthenticated }) => {
     const onChange = e => setFormData({...formData, [e.target.name]: e.target.value });
     const onSubmit = e => {
         e.preventDefault();
-        create_job(company, refer_scope_link, refer_scope_description, refer_requirement);
+        func(formData);
     };
 
     if (!isAuthenticated) {
@@ -84,4 +108,4 @@ const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(mapStateToProps, { create_job })(JobCreate);
+export default connect(mapStateToProps, {})(JobCreate);

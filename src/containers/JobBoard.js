@@ -4,6 +4,8 @@ import JobShort from '../components/JobShort';
 import JobShortGuest from '../components/JobShortGuest';
 import { connect } from 'react-redux';
 
+import styles from './JobBoard.module.css';
+
 
 const JobBoard = ({ isAuthenticated }) => {
     const [jobs, setJobs] = useState();
@@ -35,6 +37,9 @@ const JobBoard = ({ isAuthenticated }) => {
                         <JobShortGuest refer_scope_link={d.refer_scope_link} company={d.company} post_date={d.post_date} />
                     ) : <div>Loading...</div>
                 }
+                <div className={styles.footer}>
+                    <p>Support Email: fredhu0514@berkeley.edu</p>
+                </div>
             </div>
         );
     }
@@ -46,6 +51,9 @@ const JobBoard = ({ isAuthenticated }) => {
                     <JobShort refer_scope_link={d.refer_scope_link} company={d.company} post_date={d.post_date} id={d.id} />
                 ) : <div>Loading...</div>
             }
+            <div className={styles.footer}>
+                <p>Support Email: fredhu0514@berkeley.edu</p>
+            </div>
         </div>
     );
 }

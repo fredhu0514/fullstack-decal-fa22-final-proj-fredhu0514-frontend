@@ -1,0 +1,10 @@
+.footer {
+    height: 7vh;
+    padding-top: 3vh;
+    margin-bottom: 0;
+    width: 100vw;
+    color: rgb(255, 128, 0);
+    background-color: rgb(253, 245, 228);
+    text-align: center;
+    margin-top: 5vh;
+}
